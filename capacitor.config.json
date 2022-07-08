@@ -1,0 +1,6 @@
+{
+  "appId": "com.piratesonline.app",
+  "appName": "pirates",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
