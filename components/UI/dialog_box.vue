@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         close() {
-            this.$socket.send(JSON.stringify({
+            this.$server.host.send(JSON.stringify({
                 type: 'close_dialog_box',
             }))
         }
