@@ -38,7 +38,8 @@ export default {
     methods: {
         login() {
             this.$server.host.send(JSON.stringify({
-                type: 'login',
+                // cmd 1001 = login
+                cmd: 1001,
                 data: {
                     user: this.username,
                     pass: this.password,
@@ -81,7 +82,7 @@ export default {
         
         // Clear listener after first call.
         sound.once('load', function () {
-            sound.play();
+            //sound.play();
         });
 
     }

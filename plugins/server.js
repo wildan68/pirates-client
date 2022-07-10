@@ -6,7 +6,8 @@ export default ({ app }, inject) => {
         isLogin: false,
         // Message Server
         msg: null,
-        host: new WebSocket('wss://pirates-server.herokuapp.com/'),
+        //host: new WebSocket('wss://pirates-server.herokuapp.com/'),
+        host: new WebSocket('ws://localhost:5000/'),
 
 
         // Method

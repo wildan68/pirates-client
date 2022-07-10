@@ -24,7 +24,8 @@ export default {
     methods: {
         addGold() {
             this.$server.host.send(JSON.stringify({
-                type: 'addGold',
+                // cmd 1002 = add gold
+                cmd: 1002,
                 data: {
                     user: {
                         nickname: this.msg.player.char.nickname,

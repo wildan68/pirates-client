@@ -15,7 +15,8 @@ export default {
     methods: {
         close() {
             this.$server.host.send(JSON.stringify({
-                type: 'close_dialog_box',
+                // cmd 1000 = close dialog
+                cmd: 1000,
             }))
         }
     },
