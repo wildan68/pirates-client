@@ -82,7 +82,7 @@ export default {
         
         // Clear listener after first call.
         sound.once('load', function () {
-            //sound.play();
+            sound.play();
         });
 
     }
