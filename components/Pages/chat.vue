@@ -1,7 +1,7 @@
 <template>
 <div class="flex flex-col gap-[20px]">
     <div class="w-full bg-white border-box border-[4px] gap-[10px] py-[30px] px-[10px] rounded-lg flex flex-col items-center">
-        <div class="h-[450px] w-full flex-col flex justify-end overflow-hidden">
+        <div class="h-[350px] w-full flex-col flex justify-end overflow-hidden">
             <div class="flex gap-[5px]" v-for="(chat, i) in $server.msg.chat" :key="i">
                 <span class="text-black">{{ chat.nick }}</span>
                 <span class="text-black">:</span>
