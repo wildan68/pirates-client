@@ -6,6 +6,10 @@ export default ({ app }, inject) => {
         isLogin: false,
         // Message Server
         msg: null,
+        draw: {
+            listPlayer: false,
+            addGold: false,
+        },
         //host: new WebSocket('wss://pirates-server.herokuapp.com/'),
         host: new WebSocket('ws://localhost:5000/'),
 

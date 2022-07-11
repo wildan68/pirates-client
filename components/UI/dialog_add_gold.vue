@@ -33,10 +33,12 @@ export default {
                     }
                 }
             }));
-            this.$root.$emit('closeAddGold')
+            //this.$root.$emit('closeAddGold')
+            this.$server.draw.addGold = false;
         },
         close() {
-            this.$root.$emit('closeAddGold')
+            //this.$root.$emit('closeAddGold')
+            this.$server.draw.addGold = false;
         }
     },
 }
