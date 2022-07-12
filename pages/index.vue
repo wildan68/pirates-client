@@ -4,6 +4,7 @@
         <RunningText />
         <Draw v-if="$server.msg.page == 'draw'"/>
         <Chat v-if="$server.msg.page == 'chat'"/>
+        <Menu v-if="$server.msg.page == 'menu'"/>
         <Navbar />
     </div>
     <UIDialogBox />
@@ -13,6 +14,7 @@
 <script>
 import Draw from '../components/Pages/draw.vue'
 import Chat from '../components/Pages/chat.vue'
+import Menu from '../components/Pages/menu.vue'
 
 import UIDialogBox from '@/components/UI/dialog_box';
 import Navbar from '../components/UI/navbar.vue';
@@ -32,7 +34,8 @@ export default {
         Chat,
         UIDialogBox,
         Navbar,
-        RunningText
+        RunningText,
+        Menu,
     },
     methods: {
         closeAddGold() {

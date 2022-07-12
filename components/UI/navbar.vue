@@ -19,8 +19,8 @@ export default {
                 label: 'Chat',
                 page: 'chat',
             }, {
-                label: 'Jual Gold',
-                page: 'jual_gold',
+                label: 'Menu',
+                page: 'menu',
             }, {
                 label: 'Keluar',
                 page: 'logout',
