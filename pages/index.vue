@@ -5,6 +5,7 @@
         <Draw v-if="$server.msg.page == 'draw'"/>
         <Chat v-if="$server.msg.page == 'chat'"/>
         <Menu v-if="$server.msg.page == 'menu'"/>
+        <MainShop v-if="$server.msg.page == 'shop'"/>
         <Navbar />
     </div>
     <UIDialogBox />
@@ -15,6 +16,7 @@
 import Draw from '../components/Pages/draw.vue'
 import Chat from '../components/Pages/chat.vue'
 import Menu from '../components/Pages/menu.vue'
+import MainShop from '../components/Pages/mainShop.vue'
 
 import UIDialogBox from '@/components/UI/dialog_box';
 import Navbar from '../components/UI/navbar.vue';
@@ -36,6 +38,7 @@ export default {
         Navbar,
         RunningText,
         Menu,
+        MainShop,
     },
     methods: {
         closeAddGold() {
