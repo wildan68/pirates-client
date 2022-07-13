@@ -2,10 +2,10 @@
 <div class="flex flex-col gap-[20px]">
     <TopInfo/>
     <div class="w-full bg-white border-box border-[4px] gap-[10px] py-[10px] px-[10px] rounded-lg flex flex-col items-center">
-        <span class="rainbow font-[600] text-[18px]">Main Shop</span>
+        <span class="rainbow font-[600] text-[18px]">Inventory</span>
         <div class="overflow-y-scroll h-[250px] w-full">
             <div class="list_items">
-                <div :id="itemSelected == data.id ? 'selected' : 0" class="box_items" v-for="(data, i) in $server.msg.listShop" :key="i" @click.prevent="getInfoItems(data.id)">
+                <div :id="itemSelected == i ? 'selected' : 0" class="box_items" v-for="(data, i) in $server.msg.inventory" :key="i" @click.prevent="getInfoItems(i, data.id)">
                     <img :src="`/assets/${data.sprite}`" />
                 </div>
             </div>
@@ -20,13 +20,8 @@
             <div class="flex flex-col gap-[10px] flex-1">
                 <span class="text-black font-[600]">{{ infoItems.name }}</span>
                 <span class="text-gray-600">{{ infoItems.description }}</span>
-                <span class="text-gray-600 flex gap-[5px]" v-if="infoItems.type_price == 0">
-                    <img src="/png/spr_gold.png" class="w-[14px] h-[14px] object-fill" />
-                    {{ $server.gold(infoItems.price) }}
-                </span>
-                <button @click.prevent="buyItems(infoItems.id)" class="btn btn-common text-white" style="padding-left: 15px; padding-right: 15px">
-                    <i class="bi bi-cart-fill"></i>
-                    <span class="text-white">Beli</span>
+                <button class="btn btn-common text-white" style="padding-left: 15px; padding-right: 15px">
+                    <span class="text-white">Pakai</span>
                 </button>
             </div>
         </div>
@@ -48,20 +43,11 @@ export default {
         TopInfo,
     },
     methods: {
-        getInfoItems(id) {
+        getInfoItems(index, id) {
             // cari info item berdasarkan id di $server.msg.listShop
-            this.infoItems = this.$server.msg.listShop.find(item => item.id == id);
-            this.itemSelected = id;
+            this.infoItems = this.$server.msg.inventory.find(item => item.id == id);
+            this.itemSelected = index;
         },
-        buyItems(id) {
-            this.$server.host.send(JSON.stringify({
-                // cmd 1006 = buy items
-                cmd: 1006,
-                data: {
-                    id: id,
-                }
-            }));
-        }
     },
     mounted() {
         this.infoItems = null
@@ -74,8 +60,7 @@ export default {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    /*grid-template-columns: repeat(auto-fit, minmax(48px, 1fr)); */
-    gap: 0;
+    align-items: flex-start;
 }
 
 .list_items .box_items {
