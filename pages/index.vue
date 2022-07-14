@@ -62,9 +62,12 @@ export default {
         } catch (error) {
             console.log(error)
         }*/
-        if (!this.$server.isLogin) {
+        setInterval(() => {
+        if (!this.$server.isLogin || this.$server.msg.page == 'login') {
+            this.$server.isLogin = false
             this.$router.push('/login')
         }
+        }, 1000);
         this.$server.host.onmessage = (event) => {
             let data = JSON.parse(event.data)
             this.$server.msg = data
