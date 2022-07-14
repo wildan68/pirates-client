@@ -17,7 +17,7 @@
                 <i class="bi bi-person-lines-fill"></i>
             </button>
         </div>
-        <div class="fixed right-0 w-[80%] top-0 bottom-0 border border-box p-[20px] bg-white flex flex-col" v-if="$server.draw.listPlayer">
+        <div class="fixed right-0 w-[80%] top-0 bottom-0 border border-box p-[20px] bg-white flex flex-col z-20" v-if="$server.draw.listPlayer">
             <button class="absolute top-[20px] right-[20px] border-box bg-white p-4 border-2 text-yellow-700" @click.prevent="$server.draw.listPlayer = !$server.draw.listPlayer">
                 <i class="bi bi-x-lg"></i>
             </button>

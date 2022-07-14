@@ -1,6 +1,6 @@
 <template>
 <div class="flex flex-col gap-[20px]">
-    <TopInfo/>
+    <TopInfo />
     <div class="w-full bg-white border-box border-[4px] gap-[10px] py-[10px] px-[10px] rounded-lg flex flex-col items-center">
         <span class="rainbow font-[600] text-[18px]">Inventory</span>
         <div class="overflow-y-scroll h-[250px] w-full">
@@ -20,8 +20,26 @@
             <div class="flex flex-col gap-[10px] flex-1">
                 <span class="text-black font-[600]">{{ infoItems.name }}</span>
                 <span class="text-gray-600">{{ infoItems.description }}</span>
-                <button @click.prevent="equipItem(infoItems.id, infoItems.type)" class="btn btn-common text-white" style="padding-left: 15px; padding-right: 15px">
-                    <span class="text-white">Pakai</span>
+                <div class="flex gap-[10px] w-full">
+                    <button @click.prevent="equipItem(infoItems.id, infoItems.type)" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
+                        <span class="text-white">Pakai</span>
+                    </button>
+                    <button @click.prevent="deleteDialog = !deleteDialog" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
+                        <span class="text-white">Buang</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed bottom-[30px] left-0 right-0 justify-center px-[3em] z-10" v-if="deleteDialog">
+        <div class="w-full h-[10em] border-box border-[4px] flex flex-col items-center pt-[20px] relative bg-white rounded-[20px] shadow-md px-[20px]">
+            <span class="text-center">Apakah Kamu ingin membuang <span class="text-black font-[600]">{{ infoItems.name }}</span>?</span>
+            <div class="flex gap-[10px] w-full">
+                <button @click.prevent="deleteItem(itemSelected)" class="btn btn-common flex-1 text-white">
+                    <span class="text-white">Ya</span>
+                </button>
+                <button @click.prevent="deleteDialog = !deleteDialog" class="btn btn-common flex-1 text-white">
+                    <span class="text-white">Tidak</span>
                 </button>
             </div>
         </div>
@@ -37,6 +55,7 @@ export default {
         return {
             infoItems: null,
             itemSelected: null,
+            deleteDialog: false,
         }
     },
     components: {
@@ -57,6 +76,16 @@ export default {
                     type: type,
                 }
             }))
+        },
+        deleteItem(index) {
+            this.$server.host.send(JSON.stringify({
+                // cmd 1008 = delete item
+                cmd: 1008,
+                data: {
+                    index: index,
+                }
+            }))
+            this.deleteDialog = false;
         },
     },
     mounted() {
