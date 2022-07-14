@@ -10,8 +10,8 @@ export default ({ app }, inject) => {
             listPlayer: false,
             addGold: false,
         },
-        //host: new WebSocket('wss://pirates-server.herokuapp.com/'),
-        host: new WebSocket('ws://localhost:5000/'),
+        host: new WebSocket('wss://pirates-server.herokuapp.com/'),
+        //host: new WebSocket('ws://localhost:5000/'),
 
 
         // Method
