@@ -28,10 +28,12 @@ export default {
     },
     methods: {
         inputFocus() {
-            this.$refs.chatBox.classList.toggle('h-[350px]')
+            this.$refs.chatBox.classList.remove('h-[350px]')
+            this.$refs.chatBox.classList.add('h-[100px]')
         },
         inputBlur() {
-            this.$refs.chatBox.classList.toggle('h-[350px]')
+            this.$refs.chatBox.classList.remove('h-[100px]')
+            this.$refs.chatBox.classList.add('h-[350px]')
         },
         sendChat() {
             if (!this.btnChat) {

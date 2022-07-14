@@ -1,7 +1,12 @@
 <template>
-<div class="w-full bg-white border-box border-[4px] p-[20px]">
+<div class="w-full bg-white border-box border-[4px] p-[20px]" v-if="$server.msg.player.char.equip != null">
     <div class="flex gap-[10px]">
-        <div class="rounded-[10px] bg-gray-300 w-[48px] h-[48px]"></div>
+        <div class="w-[60px] flex items-center justify-center relative">
+            <img :src="`/assets/${$server.msg.player.char.equip.border}`" class="w-[55px] h-[55px] absolute z-10" />
+            <div class="rounded-[10px] bg-white w-[55px] h-[55px] flex items-center justify-center  overflow-hidden">
+                <img :src="`/assets/${$server.msg.player.char.equip.avatar}`" class="w-[55px] h-[55px] object-cover" />      
+            </div>
+        </div>
         <div class="flex flex-col gap-[10px]">
             <span class="font-[600] text-[24px]">{{ msg.player.char.nickname }}</span>
             <span class="flex gap-[10px] items-center text-[14px] bg-yellow-200 text-yellow-600 font-[600] rounded-md px-[15px] py-[5px]">

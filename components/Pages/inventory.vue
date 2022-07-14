@@ -20,7 +20,7 @@
             <div class="flex flex-col gap-[10px] flex-1">
                 <span class="text-black font-[600]">{{ infoItems.name }}</span>
                 <span class="text-gray-600">{{ infoItems.description }}</span>
-                <button class="btn btn-common text-white" style="padding-left: 15px; padding-right: 15px">
+                <button @click.prevent="equipItem(infoItems.id, infoItems.type)" class="btn btn-common text-white" style="padding-left: 15px; padding-right: 15px">
                     <span class="text-white">Pakai</span>
                 </button>
             </div>
@@ -47,6 +47,16 @@ export default {
             // cari info item berdasarkan id di $server.msg.listShop
             this.infoItems = this.$server.msg.inventory.find(item => item.id == id);
             this.itemSelected = index;
+        },
+        equipItem(id, type) {
+            this.$server.host.send(JSON.stringify({
+                // cmd 1007 = equip item
+                cmd: 1007,
+                data: {
+                    id: id,
+                    type: type,
+                }
+            }))
         },
     },
     mounted() {
