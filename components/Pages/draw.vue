@@ -27,7 +27,7 @@
                     <div class="w-[50px] flex items-center justify-center relative">
                         <img :src="`/assets/${player.char.equip.border}`" class="w-[48px] h-[48px] absolute z-10" />
                         <div class="bg-white w-[43px] h-[43px] flex items-center justify-center  overflow-hidden">
-                            <img :src="`/assets/${player.char.equip.avatar}`" class="w-[43px] h-[43px] object-cover" />
+                            <img :src="`/assets/${player.char.equip.avatar}`" :class="player.char.equip.shape == 'circle' ? 'w-[43px] h-[43px] object-cover rounded-full' : 'w-[43px] h-[43px] object-cover'"/>
                         </div>
                     </div>
                     <div class="flex flex-col gap-[5px]">
