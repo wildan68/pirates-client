@@ -1,7 +1,7 @@
 <template>
 <div class="flex flex-col gap-[20px] z-20">
     <div class="w-full bg-white border-box border-[4px] gap-[10px] py-[30px] px-[10px] rounded-lg flex flex-col items-center">
-        <div class="w-full overflow-y-scroll h-[350px]" ref="chatBox">
+        <div class="w-full overflow-y-scroll h-[350px] justify-end flex flex-col" ref="chatBox">
             <div class="w-full flex-col flex justify-end">
                 <div class="flex gap-[5px] p-[10px]" v-for="(chat, i) in $server.msg.chat" :key="i">
                     <div class="w-[50px] flex items-center justify-center relative">

@@ -1,13 +1,14 @@
 <template>
 <div class="flex flex-col bg-start h-screen py-[30px]">
     <div v-if="$server.msg != null" class="flex flex-col gap-[20px] px-[24px]">
-        <RunningText />
+        <RunningText/>
         <Draw v-if="$server.msg.page == 'draw'"/>
         <Chat v-if="$server.msg.page == 'chat'"/>
         <Menu v-if="$server.msg.page == 'menu'"/>
         <MainShop v-if="$server.msg.page == 'shop'"/>
         <Inventory v-if="$server.msg.page == 'inventory'"/>
-        <Navbar />
+        <Player v-if="$server.msg.page == 'player'"/>
+        <Navbar/>
     </div>
     <UIDialogBox />
 </div>
@@ -19,6 +20,7 @@ import Chat from '../components/Pages/chat.vue'
 import Menu from '../components/Pages/menu.vue'
 import MainShop from '../components/Pages/mainShop.vue'
 import Inventory from '../components/Pages/inventory.vue'
+import Player from '../components/Pages/player.vue'
 
 import UIDialogBox from '@/components/UI/dialog_box';
 import Navbar from '../components/UI/navbar.vue';
@@ -42,6 +44,7 @@ export default {
         Menu,
         MainShop,
         Inventory,
+        Player,
     },
     methods: {
         closeAddGold() {

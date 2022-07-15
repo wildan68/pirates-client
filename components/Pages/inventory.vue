@@ -21,7 +21,7 @@
                 <span class="text-black font-[600]">{{ infoItems.name }}</span>
                 <span class="text-gray-600">{{ infoItems.description }}</span>
                 <div class="flex gap-[10px] w-full">
-                    <button @click.prevent="equipItem(infoItems.id, infoItems.type)" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
+                    <button @click.prevent="equipItem(infoItems.id)" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
                         <span class="text-white">Pakai</span>
                     </button>
                     <button @click.prevent="deleteDialog = !deleteDialog" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
@@ -67,13 +67,12 @@ export default {
             this.infoItems = this.$server.msg.inventory.find(item => item.id == id);
             this.itemSelected = index;
         },
-        equipItem(id, type) {
+        equipItem(id) {
             this.$server.host.send(JSON.stringify({
                 // cmd 1007 = equip item
                 cmd: 1007,
                 data: {
                     id: id,
-                    type: type,
                 }
             }))
         },

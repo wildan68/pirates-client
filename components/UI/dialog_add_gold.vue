@@ -28,7 +28,6 @@ export default {
                 cmd: 1002,
                 data: {
                     user: {
-                        nickname: this.msg.player.char.nickname,
                         gold: this.jumlah,
                     }
                 }
