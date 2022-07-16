@@ -1,6 +1,6 @@
 <template>
 <div class="flex flex-col bg-start h-screen py-[30px]">
-    <div v-if="$server.msg != null" class="flex flex-col gap-[20px] px-[24px]">
+    <div v-if="$server.msg != null && $server.isLogin" class="flex flex-col gap-[20px] px-[24px]">
         <RunningText/>
         <Draw v-if="$server.msg.page == 'draw'"/>
         <Chat v-if="$server.msg.page == 'chat'"/>

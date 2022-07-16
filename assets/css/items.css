@@ -1,0 +1,6 @@
+.cosmic {
+    background: url('/assets/eff/cosmic.gif');
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
