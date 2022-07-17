@@ -67,14 +67,15 @@ export default {
             this.infoItems = this.$server.msg.inventory.find(item => item.id == id);
             this.itemSelected = index;
         },
-        equipItem(id) {
-            this.$server.host.send(JSON.stringify({
+        async equipItem(id) {
+            await this.$server.host.send(JSON.stringify({
                 // cmd 1007 = equip item
                 cmd: 1007,
                 data: {
                     id: id,
                 }
             }))
+            this.infoItems = null;
         },
         deleteItem(index) {
             this.$server.host.send(JSON.stringify({
