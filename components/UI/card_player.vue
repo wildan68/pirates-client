@@ -2,9 +2,9 @@
 <div class="w-full bg-white border-box border-[4px] p-[20px]" v-if="$server.msg.player.char.equip != null">
     <div class="flex gap-[10px]">
         <div class="w-[80px] flex items-center justify-center relative">
-            <img :src="`/assets/${$server.msg.player.char.equip[0].sprite}`" class="w-[65px] h-[65px] absolute z-10" />
+            <img v-if="$server.msg.player.char.equip[0].id != -1" :src="`/assets/${$server.msg.player.char.equip[0].sprite}`" class="w-[65px] h-[65px] absolute z-10" />
             <div class="bg-white w-[55px] h-[55px] flex items-center justify-center  overflow-hidden">
-                <img :src="`/assets/${$server.msg.player.char.equip[1].sprite}`" :class="$server.msg.player.char.equip[0].shape == 'circle' ? 'w-[55px] h-[55px] object-cover rounded-full' : 'w-[55px] h-[55px] object-cover'" />      
+                <img :src="`/assets/${$server.msg.player.char.equip[1].sprite}`" :class="$server.msg.player.char.equip[0].id != -1 ? $server.msg.player.char.equip[0].shape == 'circle' ? 'w-[55px] h-[55px] object-cover rounded-full' : 'w-[55px] h-[55px] object-cover' : 'w-[55px] h-[55px] object-cover'" />      
             </div>
         </div>
         <div class="flex flex-col gap-[10px]">

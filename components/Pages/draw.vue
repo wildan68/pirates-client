@@ -25,13 +25,13 @@
             <div class="flex flex-col gap-[10px] mt-[20px]">
                 <div class="flex gap-[5px] p-[10px]" v-for="(player, i) in $server.msg.dataBoard.player" :key="i">
                     <div class="w-[50px] flex items-center justify-center relative">
-                        <img :src="`/assets/${player.char.equip.border}`" class="w-[48px] h-[48px] absolute z-10" />
+                        <img v-if="player.char.equip.border" :src="`/assets/${player.char.equip.border}`" class="w-[48px] h-[48px] absolute z-10" />
                         <div class="bg-white w-[43px] h-[43px] flex items-center justify-center  overflow-hidden">
                             <img :src="`/assets/${player.char.equip.avatar}`" :class="player.char.equip.shape == 'circle' ? 'w-[43px] h-[43px] object-cover rounded-full' : 'w-[43px] h-[43px] object-cover'"/>
                         </div>
                     </div>
                     <div class="flex flex-col gap-[5px]">
-                        <span class="text-black text-[14px] font-[600]">{{ player.char.nickname }}</span>
+                        <span :class="player.char.equip.class ? `font-[600] text-[14px] ${player.char.equip.class}` : 'font-[600] text-[14px]'">{{ player.char.nickname }}</span>
                         <span class="text-black text-[12px] flex gap-[10px]">
                             <img src="/png/spr_gold.png" class="h-[14px]" />
                             {{ $server.gold(player.char.gold) }}

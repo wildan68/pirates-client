@@ -7,7 +7,7 @@
         <div class="h-[50px] w-full">
             <div class="list_items" v-if="$server.msg.player.char.equip != null">
                 <div @click.prevent="getInfoItems(i, data.id)" :id="itemSelected == i ? 'selected' : 0" class="box_items" v-for="(data, i) in $server.msg.player.char.equip" :key="i">
-                    <img :src="`/assets/${data.sprite}`" />
+                    <img v-if="data.id != -1" :src="`/assets/${data.sprite}`" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <span class="text-black font-[600]">{{ infoItems.name }}</span>
                 <span class="text-gray-600">{{ infoItems.description }}</span>
                 <div class="flex gap-[10px] w-full">
-                    <button @click.prevent="" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
+                    <button @click.prevent="offItems(infoItems.id)" class="btn btn-common flex-1 text-white" style="padding-left: 15px; padding-right: 15px">
                         <span class="text-white">Lepas</span>
                     </button>
                 </div>
@@ -45,10 +45,23 @@ export default {
     },
     methods: {
         getInfoItems(index, id) {
-            // cari info item berdasarkan id di $server.msg.listShop
-            this.infoItems = this.$server.msg.player.char.equip.find(item => item.id == id);
+            if (id != -1) {
+                // cari info item berdasarkan id di $server.msg.listShop
+                this.infoItems = this.$server.msg.player.char.equip.find(item => item.id == id);
+            }
+            else this.infoItems = null
             this.itemSelected = index;
         },
+        offItems(id) {
+            this.$server.host.send(JSON.stringify({
+                // cmd 1009 = lepas item
+                cmd: 1009,
+                data: {
+                    id: id,
+                }
+            }))
+            this.infoItems = null;
+        }
     },
     components: {
         TopInfo,
