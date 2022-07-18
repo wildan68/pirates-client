@@ -86,6 +86,7 @@ export default {
                 }
             }))
             this.deleteDialog = false;
+            this.infoItems = null;
         },
     },
     mounted() {

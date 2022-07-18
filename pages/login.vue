@@ -8,10 +8,10 @@
         <span class="text-gray-400">Password</span>
         <input type="password" v-model="password">
         <button @click="login" class="btn btn-login">Login</button>
-        <nuxt-link to="/register" class="btn btn-register">Buat Akun</nuxt-link>
+        <button @click.prevent="register" class="btn btn-register">Buat Akun</button>
         <br><br>
     </div>
-    <UIDialogBox/>
+    <UIDialogBox />
 </div>
 </template>
 
@@ -46,6 +46,15 @@ export default {
                 }
             }));
         },
+        async register() {
+            await this.$server.host.send(JSON.stringify({
+                cmd: 1003,
+                data: {
+                    page: 'register',
+                }
+            }));
+            this.$router.push('/register')
+        },
     },
     async mounted() {
         // connect websocket
@@ -79,7 +88,7 @@ export default {
             src: ['/audio/bg.mp3'],
             loop: true,
         });
-        
+
         // Clear listener after first call.
         sound.once('load', function () {
             //sound.play();
