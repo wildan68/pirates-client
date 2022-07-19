@@ -47,7 +47,8 @@ export default {
             }));
         },
         async register() {
-            await this.$server.host.send(JSON.stringify({
+            // cmd 1003 = change page
+            this.$server.host.send(JSON.stringify({
                 cmd: 1003,
                 data: {
                     page: 'register',
@@ -83,6 +84,7 @@ export default {
                 }
             }
         }, 1000)
+
 
         var sound = new Howl({
             src: ['/audio/bg.mp3'],

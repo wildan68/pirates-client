@@ -1,14 +1,14 @@
 <template>
 <div class="flex flex-col bg-start h-screen py-[30px]">
     <div v-if="$server.msg != null && $server.isLogin" class="flex flex-col gap-[20px] px-[24px]">
-        <RunningText/>
-        <Draw v-if="$server.msg.page == 'draw'"/>
-        <Chat v-if="$server.msg.page == 'chat'"/>
-        <Menu v-if="$server.msg.page == 'menu'"/>
-        <MainShop v-if="$server.msg.page == 'shop'"/>
-        <Inventory v-if="$server.msg.page == 'inventory'"/>
-        <Player v-if="$server.msg.page == 'player'"/>
-        <Navbar/>
+        <RunningText />
+        <Draw v-if="$server.msg.page == 'draw'" />
+        <Chat v-if="$server.msg.page == 'chat'" />
+        <Menu v-if="$server.msg.page == 'menu'" />
+        <MainShop v-if="$server.msg.page == 'shop'" />
+        <Inventory v-if="$server.msg.page == 'inventory'" />
+        <Player v-if="$server.msg.page == 'player'" />
+        <Navbar />
     </div>
     <UIDialogBox />
 </div>
@@ -25,7 +25,6 @@ import Player from '../components/Pages/player.vue'
 import UIDialogBox from '@/components/UI/dialog_box';
 import Navbar from '../components/UI/navbar.vue';
 import RunningText from '../components/UI/running_text.vue';
-
 
 export default {
     data() {
@@ -66,16 +65,33 @@ export default {
             console.log(error)
         }*/
         setInterval(() => {
-        if (!this.$server.isLogin || this.$server.msg.page == 'login') {
-            this.$server.isLogin = false
-            this.$router.push('/login')
-        }
+            if (!this.$server.isLogin) {
+                if (this.$server.msg.page === 'login') {
+                    this.$server.isLogin = false
+                    this.$router.push('/login')
+                    return
+                }
+                if (this.$server.msg.page === 'register') {
+                    this.$server.isLogin = false
+                    this.$router.push('/register')
+                    return
+                }
+                this.$server.isLogin = false
+                return
+            }
+            if (this.$server.msg.page === 'login' && !this.$server.msg.isLogin) {
+                this.$server.isLogin = false
+                this.$router.push('/login')
+                return
+            }
+
         }, 1000);
         this.$server.host.onmessage = (event) => {
             let data = JSON.parse(event.data)
             this.$server.msg = data
             console.log(event.data)
         }
+
         this.$root.$on('closeAddGold', () => {
             this.closeAddGold()
         })

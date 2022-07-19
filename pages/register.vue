@@ -12,7 +12,7 @@
         <span class="text-gray-400">Ulangi Password</span>
         <input type="password" v-model="retypePassword">
         <button class="btn btn-login" @click.prevent="onRegister">Register</button>
-        <nuxt-link to="/login" class="btn btn-register"><i class="bi bi-arrow-left"></i> Kembali</nuxt-link>
+        <button @click.prevent="toLogin" class="btn btn-register"><i class="bi bi-arrow-left"></i> Kembali</button>
         <br><br>
     </div>
     <UIDialogBox />
@@ -60,14 +60,19 @@ export default {
                 }
             }))
             return;
+        },
+        toLogin() {
+            // cmd 1003 = change page
+            this.$server.host.send(JSON.stringify({
+                cmd: 1003,
+                data: {
+                    page: 'login',
+                }
+            }));
+            this.$router.push('/login')
         }
     },
     async mounted() {
-        // this.$options.sockets.onmessage = (event) => {
-        //     let data = JSON.parse(event.data)
-        //     this.$server.msg = data
-        //     console.log(event.data)
-        // }
         try {
             this.$server.host.onopen = (event) => {
                 console.log('connected')
