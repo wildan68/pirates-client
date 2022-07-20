@@ -4,11 +4,14 @@
         <div class="w-[80px] flex items-center justify-center relative">
             <img v-if="$server.msg.player.char.equip[0].id != -1" :src="`/assets/${$server.msg.player.char.equip[0].sprite}`" class="w-[65px] h-[65px] absolute z-10" />
             <div class="bg-white w-[55px] h-[55px] flex items-center justify-center  overflow-hidden">
-                <img :src="`/assets/${$server.msg.player.char.equip[1].sprite}`" :class="$server.msg.player.char.equip[0].id != -1 ? $server.msg.player.char.equip[0].shape == 'circle' ? 'w-[55px] h-[55px] object-cover rounded-full' : 'w-[55px] h-[55px] object-cover' : 'w-[55px] h-[55px] object-cover'" />      
+                <img :src="`/assets/${$server.msg.player.char.equip[1].sprite}`" :class="$server.msg.player.char.equip[0].id != -1 ? $server.msg.player.char.equip[0].shape == 'circle' ? 'w-[55px] h-[55px] object-cover rounded-full' : 'w-[55px] h-[55px] object-cover' : 'w-[55px] h-[55px] object-cover'" />
             </div>
         </div>
         <div class="flex flex-col gap-[10px]">
-            <span :class="$server.msg.player.char.equip[2] ? `font-[600] text-[24px] ${$server.msg.player.char.equip[2].class}` : 'font-[600] text-[24px]'">{{ $server.msg.player.char.nickname }}</span>
+            <div class="flex gap-[10px] items-center">
+                <span :class="$server.msg.player.char.equip[2] ? `font-[600] text-[24px] ${$server.msg.player.char.equip[2].class}` : 'font-[600] text-[24px]'">{{ $server.msg.player.char.nickname }}</span>
+                <img src="/assets/badge/gm_badge.png" v-if="$server.msg.player.role === 1" class="w-[30px] h-[15px]"/>
+            </div>
             <span class="flex gap-[10px] items-center text-[14px] bg-yellow-200 text-yellow-600 font-[600] rounded-md px-[15px] py-[5px]">
                 <img src="/png/spr_gold.png" class="h-[24px]" /> {{ $server.gold($server.msg.player.char.gold) }}
             </span>

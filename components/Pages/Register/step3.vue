@@ -17,11 +17,24 @@
                 <span class="text-[12px]">1.000 gold</span>
             </div>
         </div>
+        <button class="btn btn-login" @click.prevent="toLogin">Klaim Hadiah</button>
     </div>
 </template>
 
 <script>
 export default {
-    
+    methods: {
+        async toLogin() {
+            await this.$server.host.send(JSON.stringify({
+                // cmd 1001 = login
+                cmd: 1001,
+                data: {
+                    user: this.$server.msg.data.username,
+                    pass: this.$server.msg.data.password,
+                }
+            }));
+            this.$router.push('/')
+        }
+    }
 }
 </script>
