@@ -22,6 +22,10 @@ export default ({ app }, inject) => {
             for (var i = 0; i < angkarev.length; i++)
                 if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
             return rupiah.split('', rupiah.length - 1).reverse().join('');
+        },
+        // konversi xp ke persen berdasarkan max_xp
+        xp(xp, max_xp) {
+            return (xp / max_xp) * 100;
         }
     }))
 }
