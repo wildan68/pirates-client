@@ -8,8 +8,8 @@
         <span>Total Gold : {{ $server.gold($server.msg.dataBoard.totalGold) }}</span>
         <span>Waktu : {{ $server.msg.dataBoard.minutes }}:{{ $server.msg.dataBoard.seconds }}</span>
         <span>Total Player : {{ $server.msg.dataBoard.totalUser }}</span>
-        <div class="flex gap-[10px]">
-            Pemenang Terakhir :
+        <div class="flex gap-[10px] w-full flex-wrap justify-center">
+            <span>Pemenang Terakhir :</span>
             <div class="flex gap-[5px]">
                 <div class="w-[18px] flex items-center justify-center relative">
                     <img v-if="$server.msg.dataBoard.lastwinner.equip.border" :src="`/assets/${$server.msg.dataBoard.lastwinner.equip.border}`" class="w-[18px] h-[18px] absolute z-10" />
