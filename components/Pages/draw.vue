@@ -8,7 +8,18 @@
         <span>Total Gold : {{ $server.gold($server.msg.dataBoard.totalGold) }}</span>
         <span>Waktu : {{ $server.msg.dataBoard.minutes }}:{{ $server.msg.dataBoard.seconds }}</span>
         <span>Total Player : {{ $server.msg.dataBoard.totalUser }}</span>
-        Pemenang Terakhir : {{ $server.msg.dataBoard.lastwinner.nickname }}<br>
+        <div class="flex gap-[10px]">
+            Pemenang Terakhir :
+            <div class="flex gap-[5px]">
+                <div class="w-[18px] flex items-center justify-center relative">
+                    <img v-if="$server.msg.dataBoard.lastwinner.equip.border" :src="`/assets/${$server.msg.dataBoard.lastwinner.equip.border}`" class="w-[18px] h-[18px] absolute z-10" />
+                    <div class="bg-white w-[14px] h-[14px] flex items-center justify-center  overflow-hidden">
+                        <img :src="`/assets/${$server.msg.dataBoard.lastwinner.equip.avatar}`" :class="$server.msg.dataBoard.lastwinner.equip.shape == 'circle' ? 'w-[14px] h-[14px] object-cover rounded-full' : 'w-[55px] h-[55px] object-cover'" />
+                    </div>
+                </div>
+                {{ $server.msg.dataBoard.lastwinner.nickname }}
+            </div>
+        </div>
         <br>
         <UIDialogAddGold v-if="$server.draw.addGold" :msg="$server.msg" />
         <button class="btn btn-common text-white" @click.prevent="$server.draw.addGold = !$server.draw.addGold">Tambah Gold</button>
@@ -27,7 +38,7 @@
                     <div class="w-[50px] flex items-center justify-center relative">
                         <img v-if="player.char.equip.border" :src="`/assets/${player.char.equip.border}`" class="w-[48px] h-[48px] absolute z-10" />
                         <div class="bg-white w-[43px] h-[43px] flex items-center justify-center  overflow-hidden">
-                            <img :src="`/assets/${player.char.equip.avatar}`" :class="player.char.equip.shape == 'circle' ? 'w-[43px] h-[43px] object-cover rounded-full' : 'w-[43px] h-[43px] object-cover'"/>
+                            <img :src="`/assets/${player.char.equip.avatar}`" :class="player.char.equip.shape == 'circle' ? 'w-[43px] h-[43px] object-cover rounded-full' : 'w-[43px] h-[43px] object-cover'" />
                         </div>
                     </div>
                     <div class="flex flex-col gap-[5px]">
