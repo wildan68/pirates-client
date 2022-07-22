@@ -13,10 +13,7 @@ export default {
     data() {
         return {
             menu: [{
-                label: 'Draw',
-                page: 'draw',
-            }, {
-                label: 'Chat',
+                label: 'Chat Dunia',
                 page: 'chat',
             }, {
                 label: 'Menu',
