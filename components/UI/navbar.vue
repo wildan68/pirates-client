@@ -2,7 +2,7 @@
 <div class="border-box border-2 fixed bottom-0 left-0 right-0 h-[50px] bg-white ">
     <div class="flex gap-[10px] justify-center mt-[-20px]">
         <button class="btn border border-box p-6 flex flex-col gap-[10px] bg-white" v-for="(menu, i) in menu" :key="i" @click.prevent="changePage(menu.page)">
-            {{ menu.label }}
+            <img :src="`/assets/ico/${menu.ico}`" class="w-[24px] h-[24px]" v-if="menu.ico" />
         </button>
     </div>
 </div>
@@ -15,9 +15,11 @@ export default {
             menu: [{
                 label: 'Chat Dunia',
                 page: 'chat',
+                ico: 'toast.png',
             }, {
                 label: 'Menu',
                 page: 'menu',
+                ico: 'menu.png'
             }, {
                 label: 'Keluar',
                 page: 'logout',
