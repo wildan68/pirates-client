@@ -11,7 +11,8 @@ export default ({ app }, inject) => {
             addGold: false,
         },
         //host: new WebSocket('wss://pirates-server.herokuapp.com/'),
-        host: new WebSocket('ws://localhost:5000/'),
+        host: new WebSocket('ws://103.189.235.44/'),
+        //host: new WebSocket('ws://localhost:5000/'),
 
 
         // Method

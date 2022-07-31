@@ -10,7 +10,7 @@
         <div class="flex flex-col gap-[5px] flex-1">
             <div class="flex gap-[10px] items-center">
                 <span :class="$server.msg.player.char.equip[2] ? `font-[600] text-[18px] ${$server.msg.player.char.equip[2].class}` : 'font-[600] text-[18px]'">{{ $server.msg.player.char.nickname }}</span>
-                <img src="/assets/badge/gm_badge.png" v-if="$server.msg.player.role === 1" class="w-[30px] h-[15px]" />
+                <img src="/assets/badge/gm_badge.png" v-if="$server.msg.player.role === 1" class="h-[30px]" />
             </div>
             <div class="flex gap-[10px] items-center">
                 <div class="level">{{ $server.msg.player.char.level }}</div>

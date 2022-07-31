@@ -12,7 +12,7 @@
                 <div class="flex flex-col gap-[5px]">
                     <div class="flex gap-[10px] items-center">
                         <span :class="chat.equip.class ? `font-[600] text-[14px] ${chat.equip.class}` : 'font-[600] text-[14px]'">{{ chat.nick }}</span>
-                        <img src="/assets/badge/gm_badge.png" v-if="chat.role === 1" class="w-[30px] h-[15px]" />
+                        <img src="/assets/badge/gm_badge.png" v-if="chat.role === 1" class="h-[30px]" />
                     </div>
                     <span class="text-black text-[12px]">{{ chat.text }}</span>
                 </div>
